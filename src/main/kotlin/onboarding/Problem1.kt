@@ -1,10 +1,20 @@
 package onboarding
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    //calcuateMax ; pobi, crong 각각에서 반복되므로 함수로 분리한다;
-    TODO("4. calcuateMax 과정을 list 길이(=2)만큼 반복한다")
-    TODO("5. pobi, crong 각각의 max값을 반환한다")
-    TODO("6. 4의 결과를 비교하고 return한다")
+    // calcuateMax ; pobi, crong 각각에서 반복되므로 함수로 분리한다;
+    //4. calcuateMax를 이용해 pobi, crong 각각의 max값을 반환한다
+    val pobiMax:Int = maxOf(calcuateMax(pobi[0]),calcuateMax(pobi[1]))
+    val crongMax:Int = maxOf(calcuateMax(crong[0]),calcuateMax(crong[1]))
+    //5. 4의 결과를 비교하고 return한다
+
     //1 :  포비 승 , 2 크롱 승, 0 : 무승부, -1 : 예외
+    if(pobiMax > crongMax){
+        return 1
+    }else if (pobiMax < crongMax){
+        return 2
+    }else{
+        return 0
+    }
+    return -1
 }
 
 //페이지 번호를 입력받고
