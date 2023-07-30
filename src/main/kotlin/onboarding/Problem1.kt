@@ -2,7 +2,11 @@ package onboarding
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     // calcuateMax ; pobi, crong 각각에서 반복되므로 함수로 분리한다;
     //4. calcuateMax를 이용해 pobi, crong 각각의 max값을 반환한다
-    val pobiMax:Int = maxOf(calcuateMax(pobi[0]),calcuateMax(pobi[1]))
+    //*예외 처리 : 입력 리스트 구성
+    if(pobi[1]-pobi[0] != 1 || crong[1]-crong[0] != 1){
+        return -1
+    }
+    val pobiMax:Int = maxOf(calcuateMax(pobi[0]),calcuateMax(pobi[0]+1))
     val crongMax:Int = maxOf(calcuateMax(crong[0]),calcuateMax(crong[1]))
     //5. 4의 결과를 비교하고 return한다
 
@@ -20,6 +24,10 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 //페이지 번호를 입력받고
 //연산결과 큰 숫자를 반환하는 함수
 fun calcuateMax(num:Int):Int{
+    //*예외 처리 : 입력값 범위
+    if(num<=0 || num >=400){
+        return -1
+    }
     //1. 입력값(int)의 길이만큼 자릿값들 리스트 형태로 저장한다"
     val pages:String = num.toString()
     //"2. 1에서 구한 리스트에서 loop를 돌며"
